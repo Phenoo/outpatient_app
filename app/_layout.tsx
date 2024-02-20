@@ -1,28 +1,45 @@
+import "../global.css";
+import { Stack, SplashScreen } from "expo-router";
+import { useEffect } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
+// import { SupabaseProvider } from "@/context/SupabaseProvider";
 
-
-import 'react-native-gesture-handler';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Stack } from 'expo-router';
-
-
+export {
+	// Catch any errors thrown by the Layout component.
+	ErrorBoundary,
+} from "expo-router";
 
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(drawer)",
+	initialRouteName: "(auth)",
 };
 
-export default function RootLayout() {
-  
+SplashScreen.preventAutoHideAsync();
 
-  	return (
-    	
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <Stack>
-            <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ title: 'Modal', presentation: 'modal' }} />
-          </Stack>
-        </GestureHandlerRootView>
-      
-  );
+export default function RootLayout() {
+	useEffect(() => {
+		// HACK: Hide splash screen after 1 second to hide initial routing animation.
+		setTimeout(() => {
+			SplashScreen.hideAsync();
+		}, 1000);
+	}, []);
+
+	return <RootLayoutNav />;
+}
+
+function RootLayoutNav() {
+	return (
+		// <SupabaseProvider>
+			<SafeAreaProvider>
+				<Stack
+					screenOptions={{
+						headerShown: false,
+					}}
+					initialRouteName="(auth)"
+				>
+					<Stack.Screen name="(auth)" />
+					<Stack.Screen name="(app)" />
+				</Stack>
+			</SafeAreaProvider>
+	);
 }

@@ -2,7 +2,7 @@
     import { StyleSheet, Text, View } from 'react-native';
 
 
-import EditScreenInfo from '../../../components/edit-screen-info';
+import { Link } from 'expo-router';
 
 export default function TabOneScreen() {
   
@@ -10,7 +10,9 @@ export default function TabOneScreen() {
 			<View style={styles.container}>
 				<Text style={styles.title}>Tab One</Text>
 				<View style={styles.separator} />
-				<EditScreenInfo path='app/(drawer)/(tabs)/index.tsx' />
+				<Link href={"/login/"}>
+					<Text>Ezddww</Text>
+				</Link>
 			</View>
 		);
     

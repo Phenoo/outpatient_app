@@ -1,9 +1,7 @@
- 
-    import { Platform, StyleSheet, Text, View } from 'react-native';
+ import { Platform, StyleSheet, Text, View } from 'react-native';
 
 import { StatusBar } from 'expo-status-bar';
 
-import EditScreenInfo from '../components/edit-screen-info';
 
 export default function ModalScreen() {
     
@@ -12,7 +10,6 @@ export default function ModalScreen() {
 				<StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
 				<Text style={styles.title}>Modal</Text>
 				<View style={styles.separator} />
-				<EditScreenInfo path='app/modal.tsx' />
 			</View>
 		);
     

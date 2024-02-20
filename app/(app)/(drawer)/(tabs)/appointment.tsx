@@ -2,15 +2,17 @@
     import { StyleSheet, Text, View } from 'react-native';
 
 
-import EditScreenInfo from '../../../components/edit-screen-info';
+import { Link } from 'expo-router';
 
-export default function TabTwoScreen() {
-    
+export default function TabOneScreen() {
+  
         return (
 			<View style={styles.container}>
-				<Text style={styles.title}>Tab Two</Text>
+				<Text style={styles.title}>Tab One</Text>
 				<View style={styles.separator} />
-				<EditScreenInfo path='app/(drawer)/(tabs)/two.tsx' />
+				<Link href={"/login/"}>
+					<Text>Ezddww</Text>
+				</Link>
 			</View>
 		);
     
